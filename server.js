@@ -98,6 +98,15 @@ app.get("/api/v1/queens", (request, response) => {
   response.json(queens);
 });
 
+app.get("/api/v1/queens/:id", (request, response) => {
+  const { id } = request.params;
+  const targetQueen = app.locals.queens.find(queen => queen.id === parseInt(id));
+  if (!targetQueen) {
+    return response.status(404).json("This queen is MIA");
+  }
+  response.status(200).json(targetQueen);
+});
+
 
 
 
