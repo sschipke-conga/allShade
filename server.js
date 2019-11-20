@@ -495,11 +495,21 @@ app.get("/api/v1/queens/:id", (request, response) => {
 
 app.get("/api/v1/seasons", (request, response) => {
   const { seasons } = app.locals;
-
   response.json(seasons);
 });
 
 
+
+app.get("/api/v1/seasons/:id", (request, response) => {
+  const { id } = request.params;
+  const targetSeason = app.locals.seasons.find(
+    season => season.id === parseInt(id)
+  );
+  if (!targetSeason) {
+    return response.status(404).json("This season is MIA");
+  }
+  response.status(200).json(targetSeason);
+});
 
 
 app.listen(app.get("port"), () => {
