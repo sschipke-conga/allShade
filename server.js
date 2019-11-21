@@ -40,8 +40,6 @@ app.get("/api/v1/queens/:id", (request, response) => {
   app.post('/api/v1/queens', (request, response) => {
     const queen = request.body;
     queen.season_id = queen.season;
-    console.log(queen)
-
   for (let requiredParameter of ['name', 'winner', 'miss_congeniality', 'season', 'quote']) {
     if (queen[requiredParameter] === undefined) {
       return response
@@ -49,11 +47,37 @@ app.get("/api/v1/queens/:id", (request, response) => {
         .send({ error: `Expected format: { name: <String>, winner: <boolean>, miss_congeniality: <boolean>, season: <integer>, quote:<string>,   }. You're missing a '${requiredParameter}' property.` });
     }
   }
-  console.log('insert',queen)
 
   database('queens').insert(queen, 'queen_id')
     .then(queenId => {
       response.status(201).json({queen_id: queenId[0], ...queen })
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
+});
+
+app.get("/api/v1/seasons", (request, response) => {
+  database('seasons').select()
+    .then((seasons) => {
+      response.status(200).json(seasons);
+    })
+    .catch(error => response.status(500).json(error))
+});
+
+app.post('/api/v1/seasons', (request, response) => {
+  const season = request.body;
+  console.log(season)
+  for (let requiredParameter of ['number', 'winner', 'image_url']) {
+    if (!season[requiredParameter]) {
+      return response
+        .status(422)
+        .send({ error: `Expected format: { number: <integer>, winner: <string>, image_url: <string>,}. You're missing a '${requiredParameter}' property.` });
+    }
+  }
+  database('seasons').insert(season, 'id')
+    .then(seasonId => {
+      response.status(201).json({ id: seasonId[0], ...season })
     })
     .catch(error => {
       response.status(500).json({ error });
@@ -75,7 +99,6 @@ app.get("/api/v1/seasons/:id", (request, response) => {
   database('seasons')
     .where({ number: id })
     .then(season => {
-      console.log(id, season)
       if (season.length === 0) {
         response.status(404).json(`No season no shade! Season number ${id} does not exist`)
       }
