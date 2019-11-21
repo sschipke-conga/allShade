@@ -51,7 +51,7 @@ const queensData = [{
     queen_id: 10,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 1
   },
   {
@@ -68,7 +68,7 @@ const queensData = [{
     winner: true,
     missCongeniality: false,
     quote: 'I bring a lot of international influence, and right now I really feel like I\'m ahead of the game.',
-    season: NaN
+    season: 1
   },
   {
     name: 'Shangela Laquifa Wadley',
@@ -108,7 +108,7 @@ const queensData = [{
     winner: false,
     missCongeniality: false,
     quote: 'People think that, since I\'m pretty, and I\'m sexy, that I should just do slutty all the time.',
-    season: NaN
+    season: 2
   },
   {
     name: 'Sahara Davenport',
@@ -195,7 +195,7 @@ const queensData = [{
     queen_id: 28,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 3
   },
   {
@@ -219,7 +219,7 @@ const queensData = [{
     queen_id: 31,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 3
   },
   {
@@ -227,7 +227,7 @@ const queensData = [{
     queen_id: 32,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 3
   },
   {
@@ -235,7 +235,7 @@ const queensData = [{
     queen_id: 33,
     winner: false,
     missCongeniality: true,
-    quote: '""',
+    quote: 'None',
     season: 3
   },
   {
@@ -252,7 +252,7 @@ const queensData = [{
     winner: false,
     missCongeniality: false,
     quote: 'Try something new -- do it with an Indian guy!',
-    season: NaN
+    season: 3
   },
   {
     name: 'Raja',
@@ -411,7 +411,7 @@ const queensData = [{
     queen_id: 55,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 5
   },
   {
@@ -507,7 +507,7 @@ const queensData = [{
     queen_id: 70,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 6
   },
   {
@@ -516,7 +516,7 @@ const queensData = [{
     winner: false,
     missCongeniality: false,
     quote: 'Just got off the boat, you know, little trip from Asia, just landed like fresh tilapia',
-    season: NaN
+    season: 6
   },
   {
     name: 'Milk',
@@ -539,7 +539,7 @@ const queensData = [{
     queen_id: 74,
     winner: false,
     missCongeniality: false,
-    quote: '""',
+    quote: 'None',
     season: 6
   },
   {
