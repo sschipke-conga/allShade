@@ -10,11 +10,10 @@ exports.up = function (knex) {
     }),
 
     knex.schema.createTable("queens", function (table) {
-      table.increments("id").primary();
       table.string("name");
-      table.integer('queen_id')
+      table.increments('queen_id').primary();
       table.boolean("winner");
-      table.boolean("missCongeniality");
+      table.boolean("miss_congeniality");
       table.string("quote");
       table.integer("season").unsigned();
       table.integer("season_id").unsigned();
