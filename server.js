@@ -29,7 +29,7 @@ app.get("/api/v1/queens/:id", (request, response) => {
     .where({queen_id: id})
     .then( queen => {
         if(queen.length === 0) {
-          response.status(404).json('This queen is MIA (does not exist)')
+          response.status(404).json(`This queen is MIA, no queen with ${id} was found`)
         }
         response.status(200).json(queen[0])}
     )
@@ -37,10 +37,16 @@ app.get("/api/v1/queens/:id", (request, response) => {
 });
 
 app.get("/api/v1/seasons", (request, response) => {
-  database('seasons').select()
-    .then((seasons) => {
-      response.status(200).json(seasons);
-    })
+  const { number } = request.params;
+  database('seasons')
+    .where({ number: number })
+    .then(season => {
+      if (seasn.length === 0) {
+        response.status(404).json('This queen is MIA (does not exist)')
+      }
+      response.status(200).json(queen[0])
+    }
+    )
     .catch(error => response.status(500).json(error))
 });
 
