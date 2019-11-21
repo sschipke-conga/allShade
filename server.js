@@ -108,6 +108,29 @@ app.get("/api/v1/seasons/:id", (request, response) => {
     .catch(error => response.status(500).json(error))
 });
 
+app.delete('/api/v1/queens/:id', (request, response) => {
+  const {id} = request.params;
+  console.log('id', id)
+  database('queens')
+    .where({ queen_id: id})
+    // .then(queen => {
+    //   if(queen.length === 0) {
+    //     return response.status(404).json(`Queen with queen_id: ${id} does not exist.`)
+    //   }
+    //   else {return queen}
+    // })
+    .del()
+    .then(res => {
+      if(res === 0) {
+        return response.status(404).json(`Queen with queen_id: ${id} does not exist.`)
+      }
+      response.status(200).json(`Queen with queen_id of ${id} successfully deleted`)
+    })
+    // .then(() => response.status(200).json(`Queen with queen_id of ${id} successfully deleted`))
+    .catch(err => {
+      response.status(500).json(err)
+    })
+})
 
 app.listen(app.get("port"), () => {
   console.log(
