@@ -26,23 +26,10 @@ app.get("/api/v1/queens", (request, response) => {
 app.get("/api/v1/queens/:id", (request, response) => {
   const { id } = request.params;
   database('queens')
-    .where({queen_id: id})
-    .then( queen => {
-        if(queen.length === 0) {
-          response.status(404).json(`This queen is MIA, no queen with ${id} was found`)
-        }
-        response.status(200).json(queen[0])}
-    )
-    .catch(error => response.status(500).json(error))
-});
-
-app.get("/api/v1/seasons", (request, response) => {
-  const { number } = request.params;
-  database('seasons')
-    .where({ number: number })
-    .then(season => {
-      if (seasn.length === 0) {
-        response.status(404).json('This queen is MIA (does not exist)')
+    .where({ queen_id: id })
+    .then(queen => {
+      if (queen.length === 0) {
+        response.status(404).json(`This queen is MIA, no queen with ${id} was found`)
       }
       response.status(200).json(queen[0])
     }
@@ -50,17 +37,29 @@ app.get("/api/v1/seasons", (request, response) => {
     .catch(error => response.status(500).json(error))
 });
 
+app.get("/api/v1/seasons", (request, response) => {
+  database('seasons').select()
+    .then((seasons) => {
+      response.status(200).json(seasons);
+    })
+    .catch(error => response.status(500).json(error))
+});
+
 
 
 app.get("/api/v1/seasons/:id", (request, response) => {
   const { id } = request.params;
-  const targetSeason = app.locals.seasons.find(
-    season => season.id === parseInt(id)
-  );
-  if (!targetSeason) {
-    return response.status(404).json("This season is MIA");
-  }
-  response.status(200).json(targetSeason);
+  database('seasons')
+    .where({ number: id })
+    .then(season => {
+      console.log(id, season)
+      if (season.length === 0) {
+        response.status(404).json(`No season no shade! Season number ${id} does not exist`)
+      }
+      response.status(200).json(season[0])
+    }
+    )
+    .catch(error => response.status(500).json(error))
 });
 
 
