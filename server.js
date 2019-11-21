@@ -25,11 +25,15 @@ app.get("/api/v1/queens", (request, response) => {
 
 app.get("/api/v1/queens/:id", (request, response) => {
   const { id } = request.params;
-  const targetQueen = app.locals.queens.find(queen => queen.id === parseInt(id));
-  if (!targetQueen) {
-    return response.status(404).json("This queen is MIA");
-  }
-  response.status(200).json(targetQueen);
+  database('queens')
+    .where({queen_id: id})
+    .then( queen => {
+        if(queen.length === 0) {
+          response.status(404).json('This queen is MIA (does not exist)')
+        }
+        response.status(200).json(queen[0])}
+    )
+    .catch(error => response.status(500).json(error))
 });
 
 app.get("/api/v1/seasons", (request, response) => {
