@@ -33,8 +33,11 @@ app.get("/api/v1/queens/:id", (request, response) => {
 });
 
 app.get("/api/v1/seasons", (request, response) => {
-  const { seasons } = app.locals;
-  response.json(seasons);
+  database('seasons').select()
+    .then((seasons) => {
+      response.status(200).json(seasons);
+    })
+    .catch(error => response.status(500).json(error))
 });
 
 
