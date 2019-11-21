@@ -15,7 +15,7 @@ exports.up = function (knex) {
       table.integer('queen_id')
       table.boolean("winner");
       table.boolean("missCongeniality");
-      table.string("qote");
+      table.string("quote");
       table.integer("season").unsigned();
       table.integer("season_id").unsigned();
       table.foreign("season_id").references("seasons.id");
