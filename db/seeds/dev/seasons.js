@@ -13,11 +13,7 @@ const createSeason = (knex, season) => {
     .forEach(queen => {
       queensPromises.push(
         createQueen(knex, {
-          'name': queen.name,
-          'winner': queen.winner,
-          'missCongeniality': queen.missCongeniality,
-          'quote': queen.quote,
-          'season': queen.season,
+          ...queen,
           season_id: seasonId[0]
         })
       )
