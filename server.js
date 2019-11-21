@@ -35,6 +35,29 @@ app.get("/api/v1/queens/:id", (request, response) => {
     }
     )
     .catch(error => response.status(500).json(error))
+  });
+  
+  app.post('/api/v1/queens', (request, response) => {
+    const queen = request.body;
+    queen.season_id = queen.season;
+    console.log(queen)
+
+  for (let requiredParameter of ['name', 'winner', 'miss_congeniality', 'season', 'quote']) {
+    if (queen[requiredParameter] === undefined) {
+      return response
+        .status(422)
+        .send({ error: `Expected format: { name: <String>, winner: <boolean>, miss_congeniality: <boolean>, season: <integer>, quote:<string>,   }. You're missing a '${requiredParameter}' property.` });
+    }
+  }
+  console.log('insert',queen)
+
+  database('queens').insert(queen, 'queen_id')
+    .then(queenId => {
+      response.status(201).json({queen_id: queenId[0], ...queen })
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
 });
 
 app.get("/api/v1/seasons", (request, response) => {
