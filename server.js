@@ -12,7 +12,6 @@ app.set("port", process.env.PORT || 3000);
 const environment = process.env.NODE_ENV || "development";
 const configuration = require("./knexfile")[environment];
 const database = require("knex")(configuration);
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app.locals.title = 'No B No Shade'
 
