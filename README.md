@@ -1,5 +1,5 @@
-# No B(ody) No Shade
-RPDR API
+# All JavaScript All Shade
+A RuPaul's Drage Race API
  ### Use of this api
  Use this api to get a list of all numerical seasons of RuPaul's Drag Race (Allstar seasons not included).
  See all the queens and which season they participated in. Endpoints and their corresponding responses are listed below:
@@ -10,6 +10,7 @@ RPDR API
   example request : `GET` `/api/v1/queens`
   <br>
   example response: 
+
   ```javascript
   [
     {
@@ -133,7 +134,7 @@ RPDR API
 
   <br>
 
-  body:
+  body: (_must_ be in **JSON**)
   ```javascript
 {
   "name": "Virginia Beach",
@@ -158,21 +159,81 @@ RPDR API
   ```
 
   <br>
-  Required properties for the queen object
 
 
-| Key        | Dataype           |
-| ------------- |:-------------:|
+| Key        | Datatype           |
+| :-------------: |:-------------:|
 | name      | `<string>` |
-| col 2 is      | centered      |
-| zebra stripes | are neat      |
+| winner      | `<boolean>`      |
+| miss_congeniality | `<string>`      |
+| season | `<integer>`      |
+| quote | `<string>`      |
 
+## Reminder:
+The body of the request above _MUST_ be in **JSON** format
+
+</details>
+
+---
+<details>
+  <summary>Adding a new season to the database</summary>
+  
+  example request : `POST` `/api/v1/seasons`
+
+  <br>
+
+  body: (_must_ be in **JSON**)
+  ```javascript
+{
+  "number": 20,
+  "winner": "Bianca del Rio",
+  "image_url": "logos.com/log.png"
+}
+  ```
+
+  example response: 
+  ```javascript
+{
+  "id": 14,
+  "number": 20,
+  "winner": "Bianca del Rio",
+  "image_url": "logos.com/log.png"
+}
+  ```
+
+  <br>
+  Required properties for the season object in the body of the request:
+
+
+| Key        | Datatype           |
+| :-------------: |:-------------:|
+| number      | `<integer>` |
+| winner      | `<string>`      |
+| image_url | `<string>`      |
+
+## Reminder:
+The body of the request above _MUST_ be in **JSON** format
 
 </details>
 
 ---
 
+<details>
+  <summary>Removing a queen from the database using their queen_id</summary>
+  
+  example request : `DELETE` `/api/v1/queens/:queen_id`
 
+  <br>
 
+  
+  example response: 
+
+  ```javascript
+"Queen with queen_id of 155 successfully deleted"
+  ```
+
+</details>
+
+---
 
 
