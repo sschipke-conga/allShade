@@ -236,4 +236,5 @@ The body of the request above _MUST_ be in **JSON** format
 
 ---
 
+If you have come across any issues or have questions about my process, you can how issues are tracked, and the workflow was handled at the [GitHub Projects Page](https://github.com/sschipke/allShade/projects/1) for this API.
 
