@@ -1,5 +1,5 @@
 # All JavaScript All Shade
-A RuPaul's Drage Race API
+A RuPaul's Drage Race API for accessing all the queens, and all the seasons for the beloved show. This API is deployed live [here!](https://allshade.herokuapp.com/)
 
 ### Technologies 
 This api was almost written entirely in JavScript use the following libraries and frameworks
@@ -26,7 +26,7 @@ This api was almost written entirely in JavScript use the following libraries an
         "queen_id": 1,
         "winner": false,
         "miss_congeniality": false,
-        "quote": "Would you fuck me? I'd fuck me.",
+        "quote": "Would you do me? I'd do me.",
         "season": 1,
         "season_id": 1,
         "created_at": "2019-11-21T20:20:24.538Z",
