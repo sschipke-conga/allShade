@@ -1,6 +1,14 @@
 # All JavaScript All Shade
 A RuPaul's Drage Race API
- ### Use of this api
+
+### Technologies 
+This api was almost written entirely in JavScript use the following libraries and frameworks
+- Node.js
+- Express.js
+- Knex
+- Postgresql for database management
+
+### Use of this api
  Use this api to get a list of all numerical seasons of RuPaul's Drag Race (Allstar seasons not included).
  See all the queens and which season they participated in. Endpoints and their corresponding responses are listed below:
 
