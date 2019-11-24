@@ -67,7 +67,6 @@ app.get("/api/v1/seasons", (request, response) => {
 
 app.post('/api/v1/seasons', (request, response) => {
   const season = request.body;
-  console.log(season)
   for (let requiredParameter of ['number', 'winner', 'image_url']) {
     if (!season[requiredParameter]) {
       return response
@@ -110,7 +109,6 @@ app.get("/api/v1/seasons/:id", (request, response) => {
 
 app.delete('/api/v1/queens/:id', (request, response) => {
   const {id} = request.params;
-  console.log('id', id)
   database('queens')
     .where({ queen_id: id})
     .del()
